@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CodeLeafy — developer &amp; builder</title>
+  <meta name="description" content="CodeLeafy — developer and builder of networking tools, desktop apps, and Telegram bots.">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/186628927?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top">
+        <img class="brand-icon" src="https://avatars.githubusercontent.com/u/186628927?v=4" alt="CodeLeafy avatar" width="22" height="22">
+        <span class="brand-name">CodeLeafy</span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#bots" data-i18n="nav-bots">Bots</a>
+          <a href="#projects" data-i18n="nav-projects">Projects</a>
+          <a href="https://github.com/Code-Leafy" rel="noopener" data-i18n="nav-github">GitHub</a>
+        </div>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" type="button" data-lang="fa" aria-pressed="false">فا</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+  <div class="sweep" id="sweep" aria-hidden="true">
+    <div class="sweep-band"></div>
+    <span class="sweep-label" id="sweep-label"></span>
+  </div>
+
+  <main id="top">
+
+    <section class="hero">
+      <img class="hero-avatar" src="https://avatars.githubusercontent.com/u/186628927?v=4" alt="CodeLeafy avatar" width="88" height="88">
+      <p class="eyebrow" data-i18n="hero-eyebrow">open-source · networking · desktop apps · bots</p>
+      <h1 data-i18n="hero-title">Developer. Builder. Hobbyist at&nbsp;scale.</h1>
+      <p class="hero-sub" data-i18n="hero-sub">
+        Networking tools, desktop apps, and Telegram bots — Rust, Python, and
+        TypeScript under the hood, built to be demoed.
+      </p>
+      <a class="cta" href="#bots" data-i18n="hero-cta">See the work <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="section" id="bots">
+      <div class="section-head">
+        <h2 data-i18n="bots-title">Telegram bots</h2>
+        <p data-i18n="bots-sub">Small, focused bots running on Cloudflare Workers.</p>
+      </div>
+      <div class="bot-grid">
+        <article class="bot-card">
+          <div class="bot-head">
+            <img class="bot-icon" src="https://img.icons8.com/ios/96/7fa98c/shopping-bag.png" alt="" width="28" height="28">
+            <div>
+              <h3 data-i18n="bot-shop-name">Telegram Shop Bot</h3>
+              <a class="bot-handle" href="https://t.me/niggajewbot" rel="noopener">@niggajewbot</a>
+            </div>
+          </div>
+          <p class="bot-tag" data-i18n="bot-shop-tag">Shop bot</p>
+        </article>
+        <article class="bot-card">
+          <div class="bot-head">
+            <img class="bot-icon" src="https://img.icons8.com/ios/96/7fa98c/line-chart.png" alt="" width="28" height="28">
+            <div>
+              <h3 data-i18n="bot-price-name">Telegram Price Bot</h3>
+              <a class="bot-handle" href="https://t.me/ngachawtestbot" rel="noopener">@ngachawtestbot</a>
+            </div>
+          </div>
+          <p class="bot-tag" data-i18n="bot-price-tag">Price bot</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head">
+        <h2 data-i18n="projects-title">Projects</h2>
+        <p data-i18n="projects-sub">Open-source repos, newest first.</p>
+      </div>
+      <ul class="project-list" id="project-list"></ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-meta">
+      <a href="https://github.com/Code-Leafy" rel="noopener">github.com/Code-Leafy</a>
+    </p>
+  </footer>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>
