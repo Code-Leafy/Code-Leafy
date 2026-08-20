@@ -29,8 +29,8 @@ Rust · TypeScript · Python · Tauri · Docker · Linux
 
 | Bot | What it does | Stack |
 | --- | ------------ | ----- |
-| **Shop Bot** | Full Telegram storefront — catalog, cart, checkout, public admin panel, auto-reset demo mode | grammY · Cloudflare Workers · D1 |
-| **Price Bot** | Live gold / USD / EUR / GBP / oil prices in your currency, with direction indicators | grammY · Cloudflare Workers · D1 |
+| **Shop Bot** | Full Telegram storefront — catalog, cart, checkout, public admin panel, auto-reset demo mode | grammY · Cloudflare Workers · D1 https://t.me/niggajewbot |  
+| **Price Bot** | Live gold / USD / EUR / GBP / oil prices in your currency, with direction indicators | grammY · Cloudflare Workers · D1 https://t.me/ngachawtestbot |  
 
 <div align="center">
 
