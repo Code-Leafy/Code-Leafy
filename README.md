@@ -4,7 +4,7 @@
 
 **Developer & builder — networking tools, desktop apps, and Telegram bots.**
 
-[![🌐 My Website](https://img.shields.io/badge/My_Website-code--leafy.github.io-2DC94E?style=for-the-badge&logo=googlechrome&logoColor=white)](https://code-leafy.github.io/Code-Leafy/)
+## [🌐 My Website — code-leafy.github.io](https://code-leafy.github.io/Code-Leafy/)
 [![Followers](https://img.shields.io/github/followers/Code-Leafy?style=flat-square&color=2DC94E&logo=github&logoColor=white)](https://github.com/Code-Leafy)
 
 Rust · TypeScript · Python · Tauri · Docker · Linux
