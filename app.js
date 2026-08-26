@@ -2,6 +2,16 @@ document.documentElement.classList.add("js");
 
 const projects = [
   {
+    name: "Hydro",
+    desc: {
+      en: "Single-file YouTube & media downloader for Google Colab with a free Cloudflare tunnel.",
+      fa: "دانلودر تک‌فایلی ویدیو و مدیا برای Google Colab با تونل رایگان Cloudflare.",
+    },
+    lang: "Python",
+    stars: 0,
+    url: "https://github.com/Code-Leafy/hydro",
+  },
+  {
     name: "G2Leafy",
     desc: {
       en: "Web dashboard for managing Xray VLESS xHTTP configs on GitHub Codespaces.",
