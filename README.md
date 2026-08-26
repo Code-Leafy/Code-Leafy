@@ -17,6 +17,7 @@ Rust · TypeScript · Python · Tauri · Docker · Linux
 
 | Project | What it does | Language | Stars |
 | ------- | ------------ | -------- | ----- |
+| [**Hydro**](https://github.com/Code-Leafy/hydro) | Single-file media downloader for Google Colab — videos, playlists, audio & images via a free Cloudflare tunnel | Python | [![stars](https://img.shields.io/github/stars/Code-Leafy/Hydro)](https://github.com/Code-Leafy/Hydro) |
 | [**G2Leafy**](https://github.com/Code-Leafy/G2Leafy) | Web dashboard for managing Xray VLESS xHTTP configs on GitHub Codespaces | Python | [![stars](https://img.shields.io/github/stars/Code-Leafy/G2Leafy)](https://github.com/Code-Leafy/G2Leafy) |
 | [**OpenGui**](https://github.com/Code-Leafy/OpenGui) | Native Windows desktop client for OpenConnect VPNs, built with Tauri 2 | Rust | [![stars](https://img.shields.io/github/stars/Code-Leafy/OpenGui)](https://github.com/Code-Leafy/OpenGui) |
 | [**SparkDns**](https://github.com/Code-Leafy/SparkDns) | Cross-platform DNS management desktop app built with Tauri 2 | Rust | [![stars](https://img.shields.io/github/stars/Code-Leafy/SparkDns)](https://github.com/Code-Leafy/SparkDns) |
