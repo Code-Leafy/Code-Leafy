@@ -50,10 +50,8 @@
 | [Shop Bot](https://t.me/niggajewbot) | Full Telegram storefront — catalog, cart, checkout, public admin panel, auto-reset demo mode | ![grammY](https://img.shields.io/badge/-grammY-0d0d0d?style=flat-square) ![Cloudflare Workers](https://img.shields.io/badge/-Cloudflare_Workers-0d0d0d?style=flat-square&logo=cloudflare&logoColor=eaeaea) ![D1](https://img.shields.io/badge/-D1-0d0d0d?style=flat-square) |
 | [Price Bot](https://t.me/ngachawtestbot) | Live gold / USD / EUR / GBP / oil prices, with direction indicators | ![grammY](https://img.shields.io/badge/-grammY-0d0d0d?style=flat-square) ![Cloudflare Workers](https://img.shields.io/badge/-Cloudflare_Workers-0d0d0d?style=flat-square&logo=cloudflare&logoColor=eaeaea) ![D1](https://img.shields.io/badge/-D1-0d0d0d?style=flat-square) |
 
-Note: the Shop Bot's handle (`@niggajewbot`) contains a slur. Worth renaming via BotFather before this repo gets wider visibility.
-
 ---
 
 <div align="center">
-<sub>If you can't route it yourself, you don't own it.</sub>
+<sub>💻</sub>
 </div>
