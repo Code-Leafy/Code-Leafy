@@ -27,8 +27,6 @@
 ![Docker](https://img.shields.io/badge/Docker-0d0d0d?style=flat-square&logo=docker&logoColor=eaeaea)
 ![Linux](https://img.shields.io/badge/Linux-0d0d0d?style=flat-square&logo=linux&logoColor=eaeaea)
 
-[![Followers](https://img.shields.io/github/followers/Code-Leafy?style=flat-square&color=0d0d0d&labelColor=0d0d0d&logoColor=eaeaea)](https://github.com/Code-Leafy?tab=followers)
-
 </div>
 
 ---
