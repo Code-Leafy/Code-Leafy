@@ -12,14 +12,14 @@ const projects = [
     url: "https://github.com/Code-Leafy/hydro",
   },
   {
-    name: "G2Leafy",
+    name: "V2Leafy",
     desc: {
-      en: "Web dashboard for managing Xray VLESS xHTTP configs on GitHub Codespaces.",
-      fa: "داشبورد وب برای مدیریت کانفیگ‌های Xray VLESS xHTTP روی GitHub Codespaces.",
+      en: "Web dashboard for managing Xray VLESS WS configs on GitHub Codespaces and Railway.",
+      fa: "داشبورد وب برای مدیریت کانفیگ‌های Xray VLESS WS روی GitHub Codespaces and Railway.",
     },
     lang: "Python",
     stars: 206,
-    url: "https://github.com/Code-Leafy/G2Leafy",
+    url: "https://github.com/Code-Leafy/V2Leafy",
   },
   {
     name: "OpenGui",
