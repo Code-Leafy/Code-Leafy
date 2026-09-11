@@ -2,6 +2,16 @@ document.documentElement.classList.add("js");
 
 const projects = [
   {
+    name: "Canval",
+    desc: {
+      en: "Infinite canvas for real PTY-backed CLI terminals, notes, and agent workflows on Windows.",
+      fa: "بوم بی‌نهایت برای ترمینال‌های CLI واقعی مبتنی بر PTY، یادداشت‌ها و گردش کار عامل‌ها روی ویندوز.",
+    },
+    lang: "HTML",
+    stars: 0,
+    url: "https://github.com/Code-Leafy/Canvas",
+  },
+  {
     name: "Hydro",
     desc: {
       en: "Single-file YouTube & media downloader for Google Colab with a free Cloudflare tunnel.",
