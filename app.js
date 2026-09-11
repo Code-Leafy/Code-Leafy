@@ -9,7 +9,7 @@ const projects = [
     },
     lang: "HTML",
     stars: 0,
-    url: "https://github.com/Code-Leafy/Canvas",
+    url: "https://github.com/Code-Leafy/Canval",
   },
   {
     name: "Hydro",
