@@ -51,7 +51,6 @@ My bots and their previews, the full project list with stars, and how to reach m
 
 <div align="center">
 
-[![GitHub followers](https://img.shields.io/github/followers/Code-Leafy?style=flat-square&color=0d0d0d&labelColor=0d0d0d&logo=github&logoColor=eaeaea)](https://github.com/Code-Leafy?tab=followers)
 [![Profile views](https://komarev.com/ghpvc/?username=Code-Leafy&style=flat-square&color=0d0d0d)](https://github.com/Code-Leafy)
 
 </div>
