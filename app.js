@@ -128,7 +128,7 @@ const i18n = {
     "bots-title-a": "Bots that get things",
     "bots-title-b": "done.",
     "bots-sub":
-      "Small, focused Telegram automations running serverless on Cloudflare's edge. Open a chat — no install, no friction.",
+      "Advanced, production-grade Telegram bot solutions running serverless on Cloudflare's edge. High-concurrency storefronts, live financial data feeds, custom Mini Apps, and automated systems.",
     "bot-shop-name": "Telegram Shop Bot",
     "bot-shop-desc":
       "A complete storefront inside Telegram — browse the catalogue, fill a cart, check out, and manage everything from a public admin panel.",
@@ -143,7 +143,7 @@ const i18n = {
     "bot-lab-kicker": "Next up",
     "bot-lab-title": "Your idea, shipped.",
     "bot-lab-desc":
-      "I build custom bots and automations. If it fits in a chat, it can probably be built.",
+      "I engineer advanced custom Telegram bots and complex automations. Any feature, workflow, payment pipeline, or custom integration you envision can be built.",
     "bot-lab-cta": "Start a conversation on GitHub",
     "projects-kicker": "02 — Open source",
     "projects-title-a": "Things I've",
@@ -154,7 +154,7 @@ const i18n = {
     "about-title-a": "A one-person studio",
     "about-title-b": "for the web, the desktop & the terminal.",
     "about-lead":
-      "I'm CodeLeafy — a developer and relentless tinkerer. I build small, sharp tools for problems I actually have: faster networks, calmer desktops, and bots that save people a few taps.",
+      "I'm CodeLeafy — a systems engineer and builder. I build robust tools for high-performance networks, modern desktop environments, and advanced, scalable Telegram bot architectures.",
     "about-p":
       "Open source is home base. Everything ships in public — from a full VPN dashboard to a single-file downloader — with an obsession for interfaces that feel effortless.",
     "about-value-1": "Build in public",
