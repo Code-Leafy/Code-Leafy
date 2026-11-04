@@ -315,7 +315,6 @@ const phones = Array.from(document.querySelectorAll(".phone"));
 const demoTabs = Array.from(document.querySelectorAll(".demo-tab"));
 const demoStatus = document.getElementById("demo-status");
 const videos = Array.from(document.querySelectorAll(".phone-video"));
-const cursorGlow = document.getElementById("cursor-glow");
 const header = document.getElementById("site-header");
 const progressBar = document.getElementById("scroll-progress");
 const root = document.documentElement;
@@ -649,38 +648,7 @@ function queueScrollUpdate() {
   requestAnimationFrame(updateScrollChrome);
 }
 
-/* ---------- cursor glow & stage parallax ---------- */
-
-if (cursorGlow && finePointer && !prefersReduced()) {
-  let glowX = 0;
-  let glowY = 0;
-  let glowFrame = 0;
-  let hasMoved = false;
-
-  const paintGlow = () => {
-    cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
-    glowFrame = 0;
-  };
-
-  window.addEventListener(
-    "pointermove",
-    (event) => {
-      glowX = event.clientX;
-      glowY = event.clientY;
-      if (!hasMoved) {
-        hasMoved = true;
-        cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
-      }
-      cursorGlow.classList.add("is-visible");
-      if (!glowFrame) glowFrame = requestAnimationFrame(paintGlow);
-    },
-    { passive: true }
-  );
-
-  document.addEventListener("pointerleave", () => {
-    cursorGlow.classList.remove("is-visible");
-  });
-}
+/* ---------- stage parallax ---------- */
 
 if (stageParallax && finePointer && !prefersReduced()) {
   let targetRX = 0;

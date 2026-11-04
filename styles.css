@@ -283,24 +283,7 @@ html[dir="rtl"] .bot-handle {
 }
 
 .cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 60;
-  width: 520px;
-  height: 520px;
-  margin: -260px 0 0 -260px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(circle, rgba(184, 247, 193, .1), rgba(184, 247, 193, 0) 62%);
-  mix-blend-mode: screen;
-  transition: opacity .5s ease;
-  will-change: transform;
-}
-
-.cursor-glow.is-visible {
-  opacity: 1;
+  display: none !important;
 }
 
 @property --pac-mouth {
