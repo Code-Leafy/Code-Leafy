@@ -36,16 +36,6 @@ Full-lifecycle development of custom Telegram bots and Telegram Mini Apps (TMA) 
 - Native system utilities for DNS management, VPN clients, and network controls
 - Single-file services and zero-dependency deployments
 
----
-
-## Projects
-
-| Repository | Description | Technologies |
-| :--- | :--- | :--- |
-| [**V2Leafy**](https://github.com/Code-Leafy/V2Leafy) | Unified FastAPI VLESS-over-WebSocket gateway with real-time web dashboard, traffic analytics, and client management. | Python, FastAPI, Docker |
-| [**NetLeafy**](https://github.com/Code-Leafy/NetLeafy) | Client-side VLESS-over-xHTTP configuration generator optimized for edge network deployment. | JavaScript, Edge Runtime |
-| [**NetLeafyScanner**](https://github.com/Code-Leafy/NetLeafyScanner) | Parallel IP/SNI discovery and proxy speed tester for VLESS and Trojan configurations. | Python, AsyncIO, Sockets |
-| [**SshTunnel**](https://github.com/Code-Leafy/SshTunnel) | Automated SOCKS5 proxy panel with Docker orchestration and TCP tuning for Linux servers. | Python, Docker, Shell |
 
 ---
 
