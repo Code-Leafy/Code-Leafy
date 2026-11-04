@@ -1,0 +1,12 @@
+# tooling workspace files
+.freebuff/
+.mimocode/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+
+# local test artifacts
+debug/
+*.bak
