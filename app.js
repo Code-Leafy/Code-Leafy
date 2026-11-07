@@ -119,10 +119,10 @@ const i18n = {
     "stage-label": "Interactive product demos",
     "phone-1": "Bring demo 01, the shop bot, forward",
     "phone-2": "Bring demo 02, the price bot, forward",
-    "phone-3": "Bring demo 03, the lab, forward",
+    "phone-3": "Bring demo 03, the anonymous chat bot, forward",
     "demo-1": "Shop bot",
     "demo-2": "Price bot",
-    "demo-3": "The lab",
+    "demo-3": "Anonymous chat bot",
     scroll: "Scroll to explore",
     "bots-kicker": "01 — In the wild",
     "bots-title-a": "Bots that get things",
@@ -135,7 +135,7 @@ const i18n = {
     "bot-price-name": "Telegram Price Bot",
     "bot-price-desc":
       "Live gold, dollar, euro, pound, and oil prices with direction indicators — one tap, always current, no chart-reading required.",
-    "bot-chat-name": "Telegram Chat Bot",
+    "bot-chat-name": "Anonymous Chat Bot",
     "bot-chat-desc":
       "Anonymous chat matching in Persian and English — find a partner randomly, by GPS, by province, or by gender filter, with coins and age filters built in.",
     "bot-open": "Open in Telegram",
