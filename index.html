@@ -13,9 +13,9 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=16">
-  <script src="app.js?v=7" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20">
+  <script src="app.js?v=9" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -48,7 +48,7 @@
   <header class="site-header" id="site-header">
     <nav class="nav shell" aria-label="Main">
       <a class="brand" href="#top" aria-label="CodeLeafy — home">
-        <span class="brand-mark" aria-hidden="true"><img src="assets/logo.png" alt="" width="28" height="28"></span>
+        <span class="brand-mark" aria-hidden="true"><picture class="logo-pic"><source srcset="assets/logo-96.webp" type="image/webp"><img src="assets/logo-96.png" alt="" width="28" height="28" decoding="async"></picture></span>
         <span class="brand-name">CodeLeafy</span>
       </a>
 
@@ -89,8 +89,6 @@
       </div>
     </div>
   </div>
-
-  <div class="lang-wash" id="lang-wash" aria-hidden="true"><span class="lang-wash-label" id="lang-wash-label"></span></div>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
@@ -156,7 +154,11 @@
                 <div class="phone-float">
                   <div class="phone-body">
                     <div class="phone-screen">
-                      <video class="phone-video" src="assets/bot1.mp4" poster="assets/bot1-poster.jpg?v=15" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+                      <picture>
+                        <source type="image/avif" srcset="assets/bot1-poster-360.avif 360w, assets/bot1-poster-720.avif 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <source type="image/webp" srcset="assets/bot1-poster-360.webp 360w, assets/bot1-poster-720.webp 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <img class="phone-media" src="assets/bot1-poster-360.jpg" srcset="assets/bot1-poster-360.jpg 360w, assets/bot1-poster-720.jpg 720w" sizes="(max-width: 680px) 40vw, 224px" alt="" width="1080" height="2245" decoding="async" fetchpriority="high">
+                      </picture>
                       <span class="screen-glare" aria-hidden="true"></span>
                       <span class="phone-island" aria-hidden="true"></span>
                     </div>
@@ -172,7 +174,11 @@
                 <div class="phone-float">
                   <div class="phone-body">
                     <div class="phone-screen">
-                      <video class="phone-video" src="assets/bot2.mp4" poster="assets/bot2-poster.jpg?v=15" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+                      <picture>
+                        <source type="image/avif" srcset="assets/bot2-poster-360.avif 360w, assets/bot2-poster-720.avif 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <source type="image/webp" srcset="assets/bot2-poster-360.webp 360w, assets/bot2-poster-720.webp 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <img class="phone-media" src="assets/bot2-poster-360.jpg" srcset="assets/bot2-poster-360.jpg 360w, assets/bot2-poster-720.jpg 720w" sizes="(max-width: 680px) 40vw, 224px" alt="" width="1080" height="2245" decoding="async">
+                      </picture>
                       <span class="screen-glare" aria-hidden="true"></span>
                       <span class="phone-island" aria-hidden="true"></span>
                     </div>
@@ -188,7 +194,11 @@
                 <div class="phone-float">
                   <div class="phone-body">
                     <div class="phone-screen">
-                      <video class="phone-video" src="assets/bot3.mp4" poster="assets/bot3-poster.jpg?v=15" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+                      <picture>
+                        <source type="image/avif" srcset="assets/bot3-poster-360.avif 360w, assets/bot3-poster-720.avif 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <source type="image/webp" srcset="assets/bot3-poster-360.webp 360w, assets/bot3-poster-720.webp 720w" sizes="(max-width: 680px) 40vw, 224px">
+                        <img class="phone-media" src="assets/bot3-poster-360.jpg" srcset="assets/bot3-poster-360.jpg 360w, assets/bot3-poster-720.jpg 720w" sizes="(max-width: 680px) 40vw, 224px" alt="" width="1080" height="2245" decoding="async">
+                      </picture>
                       <span class="screen-glare" aria-hidden="true"></span>
                       <span class="phone-island" aria-hidden="true"></span>
                     </div>
@@ -272,7 +282,11 @@
                 <span class="bot-preview-kicker">01 / TELEGRAM</span>
                 <span class="bot-preview-number" aria-hidden="true">01</span>
                 <div class="mini-phone" aria-hidden="true">
-                  <img src="assets/bot1-poster.jpg?v=15" alt="" loading="lazy" width="540" height="1080">
+                  <picture>
+                    <source type="image/avif" srcset="assets/bot1-poster-360.avif 360w, assets/bot1-poster-720.avif 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <source type="image/webp" srcset="assets/bot1-poster-360.webp 360w, assets/bot1-poster-720.webp 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <img src="assets/bot1-poster-360.jpg" srcset="assets/bot1-poster-360.jpg 360w, assets/bot1-poster-720.jpg 720w" sizes="(max-width: 680px) 112px, 150px" alt="" loading="lazy" decoding="async" width="1080" height="2245">
+                  </picture>
                 </div>
                 <span class="bot-preview-glow" aria-hidden="true"></span>
               </div>
@@ -304,7 +318,11 @@
                 <span class="bot-preview-kicker">02 / TELEGRAM</span>
                 <span class="bot-preview-number" aria-hidden="true">02</span>
                 <div class="mini-phone" aria-hidden="true">
-                  <img src="assets/bot2-poster.jpg?v=15" alt="" loading="lazy" width="540" height="1080">
+                  <picture>
+                    <source type="image/avif" srcset="assets/bot2-poster-360.avif 360w, assets/bot2-poster-720.avif 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <source type="image/webp" srcset="assets/bot2-poster-360.webp 360w, assets/bot2-poster-720.webp 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <img src="assets/bot2-poster-360.jpg" srcset="assets/bot2-poster-360.jpg 360w, assets/bot2-poster-720.jpg 720w" sizes="(max-width: 680px) 112px, 150px" alt="" loading="lazy" decoding="async" width="1080" height="2245">
+                  </picture>
                 </div>
                 <span class="bot-preview-glow" aria-hidden="true"></span>
               </div>
@@ -336,7 +354,11 @@
                 <span class="bot-preview-kicker">03 / TELEGRAM</span>
                 <span class="bot-preview-number" aria-hidden="true">03</span>
                 <div class="mini-phone" aria-hidden="true">
-                  <img src="assets/bot3-poster.jpg?v=15" alt="" loading="lazy" width="540" height="1080">
+                  <picture>
+                    <source type="image/avif" srcset="assets/bot3-poster-360.avif 360w, assets/bot3-poster-720.avif 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <source type="image/webp" srcset="assets/bot3-poster-360.webp 360w, assets/bot3-poster-720.webp 720w" sizes="(max-width: 680px) 112px, 150px">
+                    <img src="assets/bot3-poster-360.jpg" srcset="assets/bot3-poster-360.jpg 360w, assets/bot3-poster-720.jpg 720w" sizes="(max-width: 680px) 112px, 150px" alt="" loading="lazy" decoding="async" width="1080" height="2245">
+                  </picture>
                 </div>
                 <span class="bot-preview-glow" aria-hidden="true"></span>
               </div>
@@ -448,7 +470,10 @@
             <span class="seal-orbit seal-orbit-3" aria-hidden="true"></span>
             <div class="seal">
               <div class="seal-core">
-                <img src="assets/logo.png" alt="" width="160" height="160">
+                <picture class="logo-pic">
+                  <source srcset="assets/logo-320.webp" type="image/webp">
+                  <img src="assets/logo-320.png" alt="" width="160" height="160" loading="lazy" decoding="async">
+                </picture>
               </div>
             </div>
             <div class="tech-orbit" aria-hidden="true">
@@ -498,7 +523,7 @@
     <div class="shell footer-top">
       <div class="footer-brand">
         <a class="brand" href="#top" aria-label="CodeLeafy — home">
-          <span class="brand-mark" aria-hidden="true"><img src="assets/logo.png" alt="" width="28" height="28"></span>
+          <span class="brand-mark" aria-hidden="true"><picture class="logo-pic"><source srcset="assets/logo-96.webp" type="image/webp"><img src="assets/logo-96.png" alt="" width="28" height="28" decoding="async"></picture></span>
           <span class="brand-name">CodeLeafy</span>
         </a>
         <p data-i18n="footer-tagline">Developer &amp; builder — networking tools, desktop apps, and Telegram bots.</p>

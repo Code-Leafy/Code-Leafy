@@ -209,6 +209,14 @@ const REPOS_ENDPOINT = `https://api.github.com/users/${GITHUB_USER}/repos?per_pa
 const REPOS_CACHE_KEY = "codeleafy:repos-cache:v1";
 const REPOS_CACHE_TTL = 10 * 60 * 1000; // 10 minutes — keeps us clear of the unauthenticated API rate limit.
 
+function whenIdle(callback) {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 2500 });
+  } else {
+    window.setTimeout(callback, 1200);
+  }
+}
+
 let currentLang = null;
 let projectsRendered = false;
 let githubLoadStarted = false;
@@ -259,7 +267,7 @@ function applyGitHubRepos(repos) {
 }
 
 async function loadGitHubProjects() {
-  if (githubLoadStarted) return;
+  if (githubLoadStarted || navigator.onLine === false) return;
   githubLoadStarted = true;
 
   let cached = null;
@@ -274,9 +282,13 @@ async function loadGitHubProjects() {
     return;
   }
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+
   try {
     const response = await fetch(REPOS_ENDPOINT, {
       headers: { Accept: "application/vnd.github+json" },
+      signal: controller.signal,
     });
     if (!response.ok) throw new Error(`GitHub API responded ${response.status}`);
 
@@ -299,6 +311,8 @@ async function loadGitHubProjects() {
     applyGitHubRepos(repos);
   } catch (err) {
     console.warn("GitHub projects unavailable, keeping local list.", err);
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -314,20 +328,17 @@ const stageParallax = document.getElementById("stage-parallax");
 const phones = Array.from(document.querySelectorAll(".phone"));
 const demoTabs = Array.from(document.querySelectorAll(".demo-tab"));
 const demoStatus = document.getElementById("demo-status");
-const videos = Array.from(document.querySelectorAll(".phone-video"));
 const header = document.getElementById("site-header");
 const progressBar = document.getElementById("scroll-progress");
 const root = document.documentElement;
 
 let activeDemo = 0;
-let videosPlaying = !prefersReduced();
 let suppressClickUntil = 0;
 
 /* ---------- small helpers ---------- */
 
 const tiltBound = new WeakSet();
 let menuOpen = false;
-let langSwitching = false;
 let stageDragging = false;
 let revealObserver = null;
 
@@ -427,6 +438,19 @@ function bindTilt(el) {
     raf = 0;
   };
 
+  const reset = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    el.classList.remove("is-tilting");
+    el.style.transform = "";
+    el.style.setProperty("--mx", "50%");
+    el.style.setProperty("--my", "50%");
+  };
+
+  el.addEventListener("pointerenter", () => el.classList.add("is-tilting"), {
+    passive: true,
+  });
+
   el.addEventListener(
     "pointermove",
     (event) => {
@@ -443,13 +467,8 @@ function bindTilt(el) {
     { passive: true }
   );
 
-  el.addEventListener("pointerleave", () => {
-    if (raf) cancelAnimationFrame(raf);
-    raf = 0;
-    el.style.transform = "";
-    el.style.setProperty("--mx", "50%");
-    el.style.setProperty("--my", "50%");
-  });
+  el.addEventListener("pointerleave", reset, { passive: true });
+  el.addEventListener("pointercancel", reset, { passive: true });
 }
 
 function updateProjectLanguage() {
@@ -579,30 +598,30 @@ function setDemo(index, { scroll = false, announce = true } = {}) {
   }
 }
 
-/* ---------- video controls ---------- */
+/* ---------- motion budget ---------- */
 
 let stageVisible = true;
 
-function playVideos() {
-  videos.forEach((video) => {
-    video.muted = true;
-    const attempt = video.play();
-    if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
-  });
-}
+function initMotionPause() {
+  if (!("IntersectionObserver" in window) || prefersReduced()) return;
 
-function pauseVideos() {
-  videos.forEach((video) => {
-    try {
-      video.pause();
-    } catch (err) {}
-  });
-}
+  const targets = document.querySelectorAll(
+    ".hero, .marquee, .lab-card, .about-visual, .contact-panel"
+  );
 
-function setVideosPlaying(play) {
-  videosPlaying = play;
-  if (play) playVideos();
-  else pauseVideos();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        entry.target.classList.toggle(
+          "is-motion-paused",
+          !entry.isIntersecting
+        );
+      }
+    },
+    { rootMargin: "180px 0px" }
+  );
+
+  targets.forEach((el) => observer.observe(el));
 }
 
 /* ---------- scroll chrome ---------- */
@@ -719,35 +738,55 @@ for (const phone of phones) {
 if (stage) {
   stage.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-    if (!event.target.closest(".phone, .demo-tab, .stage-toggle")) return;
+    if (!event.target.closest(".phone, .demo-tab")) return;
     event.preventDefault();
     setDemo(activeDemo + (event.key === "ArrowRight" ? 1 : -1));
   });
 
   let dragStart = null;
+  let dragX = 0;
+  let dragQueued = false;
   const dragThreshold = 50;
+
+  const applyDrag = () => {
+    if (stageParallax) {
+      stageParallax.style.transform = `translate3d(${dragX}px, 0, 0)`;
+    }
+    dragQueued = false;
+  };
 
   stage.addEventListener(
     "pointerdown",
     (event) => {
-      dragStart = { x: event.clientX, y: event.clientY };
+      if (event.target.closest(".demo-tab")) return;
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      dragStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      dragX = 0;
       stageDragging = false;
       stage.classList.add("is-dragging");
     },
     { passive: true }
   );
 
-  window.addEventListener(
+  stage.addEventListener(
     "pointermove",
     (event) => {
-      if (!dragStart) return;
+      if (!dragStart || event.pointerId !== dragStart.id) return;
       const dx = event.clientX - dragStart.x;
       const dy = event.clientY - dragStart.y;
       if (!stageDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
         stageDragging = true;
+        if (stage.setPointerCapture) {
+          try {
+            stage.setPointerCapture(event.pointerId);
+          } catch (err) {}
+        }
       }
-      if (stageDragging && stageParallax) {
-        stageParallax.style.transform = `translate3d(${dx * 0.15}px, 0, 0)`;
+      if (!stageDragging) return;
+      dragX = dx * 0.15;
+      if (!dragQueued) {
+        dragQueued = true;
+        requestAnimationFrame(applyDrag);
       }
     },
     { passive: true }
@@ -756,16 +795,18 @@ if (stage) {
   const endDrag = (event) => {
     if (!dragStart) return;
     const startX = dragStart.x;
+    const pointerId = dragStart.id;
     dragStart = null;
     stageDragging = false;
-    if (stageParallax) {
-      stageParallax.style.transform = "";
-    }
+    if (stageParallax) stageParallax.style.transform = "";
     stage.classList.remove("is-dragging");
+    if (stage.releasePointerCapture) {
+      try {
+        stage.releasePointerCapture(pointerId);
+      } catch (err) {}
+    }
 
-    const endX = event.clientX;
-    const deltaX = endX - startX;
-
+    const deltaX = event.clientX - startX;
     if (Math.abs(deltaX) > dragThreshold) {
       suppressClickUntil = performance.now() + 400;
       setDemo(activeDemo + (deltaX < 0 ? 1 : -1));
@@ -774,8 +815,7 @@ if (stage) {
 
   stage.addEventListener("pointerup", endDrag, { passive: true });
   stage.addEventListener("pointercancel", endDrag, { passive: true });
-  window.addEventListener("pointerup", endDrag, { passive: true });
-  window.addEventListener("pointercancel", endDrag, { passive: true });
+  stage.addEventListener("lostpointercapture", endDrag, { passive: true });
 }
 
 document.addEventListener(
@@ -802,19 +842,11 @@ if ("IntersectionObserver" in window && stage) {
   const stageObserver = new IntersectionObserver(
     (entries) => {
       stageVisible = Boolean(entries[0] && entries[0].isIntersecting);
-      if (!videosPlaying) return;
-      if (stageVisible && !document.hidden) playVideos();
-      else pauseVideos();
     },
     { threshold: 0.04 }
   );
   stageObserver.observe(stage);
 }
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) pauseVideos();
-  else if (videosPlaying && stageVisible) playVideos();
-});
 
 window.addEventListener("scroll", queueScrollUpdate, { passive: true });
 
@@ -824,12 +856,11 @@ if (mobileMenu) mobileMenu.inert = true;
 
 applyLanguage();
 renderProjects();
+document.querySelectorAll("[data-tilt]").forEach(bindTilt);
 initReveals();
-loadGitHubProjects();
+initMotionPause();
+whenIdle(loadGitHubProjects);
 setDemo(0, { announce: false });
-
-if (videosPlaying) playVideos();
-else pauseVideos();
 
 updateScrollChrome();
 
