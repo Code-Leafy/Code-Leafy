@@ -760,7 +760,7 @@ if (stage) {
     (event) => {
       if (event.target.closest(".demo-tab")) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
-      dragStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      dragStart = { x: event.clientX, y: event.clientY, id: event.pointerId, pointerType: event.pointerType };
       dragX = 0;
       stageDragging = false;
       stage.classList.add("is-dragging");
@@ -796,6 +796,7 @@ if (stage) {
     if (!dragStart) return;
     const startX = dragStart.x;
     const pointerId = dragStart.id;
+    const pointerType = dragStart.pointerType;
     dragStart = null;
     stageDragging = false;
     if (stageParallax) stageParallax.style.transform = "";
@@ -807,7 +808,8 @@ if (stage) {
     }
 
     const deltaX = event.clientX - startX;
-    if (Math.abs(deltaX) > dragThreshold) {
+    const threshold = pointerType === "touch" ? 40 : dragThreshold;
+    if (Math.abs(deltaX) > threshold) {
       suppressClickUntil = performance.now() + 400;
       setDemo(activeDemo + (deltaX < 0 ? 1 : -1));
     }
@@ -816,6 +818,39 @@ if (stage) {
   stage.addEventListener("pointerup", endDrag, { passive: true });
   stage.addEventListener("pointercancel", endDrag, { passive: true });
   stage.addEventListener("lostpointercapture", endDrag, { passive: true });
+
+  // On touch, prevent vertical page scroll once a horizontal swipe is intended,
+  // so the carousel actually receives the gesture on mobile devices.
+  let touchStart = null;
+  stage.addEventListener(
+    "touchstart",
+    (event) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY };
+    },
+    { passive: true }
+  );
+  stage.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!touchStart || event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      const dx = touch.clientX - touchStart.x;
+      const dy = touch.clientY - touchStart.y;
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) {
+        event.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+  stage.addEventListener(
+    "touchend",
+    () => {
+      touchStart = null;
+    },
+    { passive: true }
+  );
 }
 
 document.addEventListener(
